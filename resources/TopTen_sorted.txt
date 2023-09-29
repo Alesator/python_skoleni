@@ -1,0 +1,4 @@
+ -- Weeks --| -- Single --|-- Artist --
+ 37| As It Was|Styles Harry
+ 14| Green Green Grass|Ezra George
+ 12| Forget Me|Capaldi Lewis
