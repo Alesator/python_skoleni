@@ -61,5 +61,10 @@ f1.set_origin('pacific')
 f1.gift( '700938/3869', 50)
 f1.gift( '700938 3869', 30)
 f1.gift( ' 9503833333 ', 40)
-print( f1 )
+f1.origin_list = ['Vltava', 'Labe', 'Odra']
+print( f1.origin_list )
 assert(str(f1))== 'name: Clownfish Nemo; birth: 2003; origin: Pacific; water: saltwater; donors: 7009383869 (80),9503833333 (40)'
+
+f2 = Fish('Clownfish Nemo2', 2003, 'saltwater')
+f2.set_origin('pacific')
+print(f2.origin_list)
