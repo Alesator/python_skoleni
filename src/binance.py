@@ -3,7 +3,8 @@
 import csv
 from datetime import datetime
 
-date_format = '%d.%m.%Y %H:%M'
+# date_format = '%d.%m.%Y %H:%M'
+date_format = '%Y-%m-%d %H:%M'
 
 with open('../resources/binance.csv') as file_obj:
     # Skips the heading
@@ -18,12 +19,15 @@ with open('../resources/binance.csv') as file_obj:
     total_get_CZK = 0
 
     for line in file_obj.readlines():
-        array = line.split(';')
+        array = line.split(',')
         if (array[2] == "N/A"):
             print(array)
+            date_buy = "2023-01-01 12:00"
+        else:
+            date_buy = array[2]
 
-        if (array[8] != "Fee") & (array[2] != "N/A"):
-            year_buy = datetime.strptime(array[2], date_format).year
+        if (array[8] != "Fee") :
+            year_buy = datetime.strptime(date_buy, date_format).year
             year_sell = datetime.strptime(array[3], date_format).year
 
             buy_usd = float(array[5].replace(",","."))
@@ -39,4 +43,5 @@ with open('../resources/binance.csv') as file_obj:
     print(str(total_cost_CZK) + " CZK " + "/" + str(total_cost_USD) + " USD")
     print(str(total_get_CZK) + " CZK " + "/" + str(total_get_USD) + " USD")
 
+    print("Profit v USD: " + str(total_get_USD - total_cost_USD))
     print ("Profit v CZK: " + str(total_get_CZK - total_cost_CZK))
