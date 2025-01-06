@@ -6,12 +6,12 @@ from datetime import datetime
 # date_format = '%d.%m.%Y %H:%M'
 date_format = '%Y-%m-%d %H:%M'
 
-with open('../resources/binance.csv') as file_obj:
+with open('../resources/Realized_Capital_Gains_2025_01_03_16_34.csv') as file_obj:
     # Skips the heading
     # Using next() method
     heading = next(file_obj)
 
-    rate = {2022:23.41, 2023:22.14}
+    rate = {2022:23.41, 2023:22.14, 2024:23.50}
 
     total_cost_USD = 0
     total_get_USD = 0
@@ -22,11 +22,11 @@ with open('../resources/binance.csv') as file_obj:
         array = line.split(',')
         if (array[2] == "N/A"):
             print(array)
-            date_buy = "2023-01-01 12:00"
+            date_buy = "2024-01-01 12:00"
         else:
             date_buy = array[2]
 
-        if (array[8] != "Fee") :
+        if (array[8] != "Fee" and array[0] != "USDT") :
             year_buy = datetime.strptime(date_buy, date_format).year
             year_sell = datetime.strptime(array[3], date_format).year
 
